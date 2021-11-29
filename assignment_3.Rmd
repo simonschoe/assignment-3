@@ -6,7 +6,7 @@ author:
   - author 3 (matriculation number)
 date: '2021-12-06 till 2022-01-16'
 output:
-  pdf_document: default # uncomment to knit output to pdf
+  # pdf_document: default # uncomment to knit output to pdf
   html_notebook: default  
 urlcolor: blue
 ---
@@ -72,7 +72,7 @@ The proclaimed benefits of neural network-based machine learning (aka *deep lear
 3. Why would you consider neural networks as *versatile* tools?
 4. How are neural networks *reusable*? How does the mechanism of *reusing* a neural network work?
 
-*Hint: To answer these questions, you will have to perform your own research and discuss within you group. Presumably, you won't find direct answers to these questions in the lecture slides/textbook. Also, you might find it helpful to revisit these questions after you have finished the programming tasks which follow.*
+*Hint: To answer these questions, you will have to perform your own research and discuss within your group. Presumably, you won't find direct answers to these questions in the lecture slides/textbook. Also, you might find it helpful to revisit these questions after you have finished the programming tasks which follow.*
 
 
 ### Task 1.2
