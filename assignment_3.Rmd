@@ -32,6 +32,8 @@ ___
 
 - For several exercises throughout the assignment you may find hints and code snippets that should support you in solving the exercises. You may rely on these to answer the questions, but you don't have to. Any answer that solves the exercise is acceptable.
 
+- **Important:** In this assignment you will have to work with dedicated deep learning software packages (in particular, `keras` and `tensorflow` for `R`). These packages require a Python installation on your computer as the deep learning code will be send from `R` to `Python` in the background. Commonly, setting up Python (incl. `keras` and `tensorflow` for Python) and making it work in unison with `R` can be quite a struggle. Therefore, we urge you to follow the official [installation guideline](https://web.stanford.edu/~hastie/ISLR2/keras-instructions.html) that accompanies the ISLR textbook.
+
 \pagebreak
 
 Before starting, leverage the `pacman` package using the code chunk below. This package is a convenient helper for installing and loading packages at the start of your project. It checks whether a package has already been installed and loads the package if available. Otherwise it installs the package autonomously. Use `pacman::p_load()` to install and load the following packages:
