@@ -124,7 +124,7 @@ x_test   <- scale(x_test, center = mean_vec, scale = sd_vec)
 
 Currently, several deep learning frameworks[^1] exist that allow for easy training and prototyping of neural network models. Three of the most prominent deep learning frameworks are [PyTorch](https://pytorch.org/), [Tensorflow](https://www.tensorflow.org/), and [Keras](https://keras.io/). In fact, Keras has been recently integrated into Tensorflow and the two are now considered the main entry points for `R` users to enter the realm of deep learning.
 
-We start by implementing a shallow [feed-forward neural network](https://www.asimovinstitute.org/neural-network-zoo/) model. As our dataset is relatively small, we use only two hidden layers with 64 units each. The number of inputs (`input_shape`) to the first hidden layer is determined by the dimensionality of the predictor set while the number of output nodes (`units` in the output layer) is determined by the task at hand, i.e. the neural net outputs one continuous values for regression problems but one probability per class for classification problems. Complete the following code chunk in order to initialize the model.
+We start by implementing a shallow [feed-forward neural network](https://www.asimovinstitute.org/neural-network-zoo/) model. As our dataset is relatively small, we use only two hidden layers with 64 units each. The number of inputs (`input_shape`) to the first hidden layer is determined by the dimensionality of the predictor set while the number of output nodes (`units` in the output layer) is determined by the task at hand, i.e. the neural net outputs one continuous value for regression problems but one probability per class for classification problems. Complete the following code chunk in order to initialize the model.
 
 ```{r, eval=F}
 nn_mod <- keras::keras_model_sequential() %>%
@@ -149,7 +149,7 @@ nn_mod %>%
   )
 ```
 
-In this example, we learn the optimal model coefficients (i.e. weights and biases) by minimizing the models mean squared error (`loss = "mse"`). Gradient descent is implemented using the *RMSprop* algorithm (see this [blog post](https://ruder.io/optimizing-gradient-descent/index.html) by Sebastian Ruder for alternative gradient descent algorithms). Roughly speaking, you can think of *RMSprop* as an advanced version of the plain vanille back-propagation algorithm which executes the following main steps:
+In this example, we learn the optimal model coefficients (i.e. weights and biases) by minimizing the models mean squared error (`loss = "mse"`). Gradient descent is implemented using the *RMSprop* algorithm (see this [blog post](https://ruder.io/optimizing-gradient-descent/index.html) by Sebastian Ruder for alternative gradient descent algorithms). Roughly speaking, you can think of *RMSprop* as an advanced version of the plain vanilla back-propagation algorithm which executes the following main steps:
 
 1. Calculate the output of each node in a neural network based on the current model weights (*forward pass*).
 2. Calculate the partial derivative of the loss (here we minimize the `mse`) with respect to each model weight (i.e. the *gradient*) to identify the direction in which weights must be updated.
@@ -202,6 +202,7 @@ p_sigmoid | p_relu
 
 Finally, let's train the neural network model (running the code below may take some time depending on your hardware). Similar to the `tidymodels` framework, `keras` exposes a `fit` function to execute the model training routine. In this example, we wrap our training procedure in a 4-fold cross-validation loop to obtain a more robust estimate of model performance. By setting `verbose` to `2` in the call to `fit`, `keras` prints additional training statistics and spawns a tensorboard in your RStudio *Viewer* pane to help you track the model error during training.
 
+
 ```{r, eval=F}
 set.seed(2021)
 
@@ -237,8 +238,8 @@ for (k in seq_along(folds$splits)) {
   # index into overall training data to obtain CV train and validation set
   x_val <- x_train[-ids,]
   y_val <- y_train[-ids]
-  x_train_cv <- x_train[-ids,]
-  y_train_cv <- y_train[-ids]
+  x_train_cv <- x_train[ids,]
+  y_train_cv <- y_train[ids]
   
   # initialize new model
   nn_mod <- init_nn()
