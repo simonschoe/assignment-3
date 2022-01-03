@@ -240,7 +240,7 @@ for (k in seq_along(folds$splits)) {
   y_val <- y_train[-ids]
   x_train_cv <- x_train[ids,]
   y_train_cv <- y_train[ids]
-  
+
   # initialize new model
   nn_mod <- init_nn()
   nn_mod %>% 
